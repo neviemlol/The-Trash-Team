@@ -1,7 +1,11 @@
 from flask import Flask, jsonify, request
 
 app = Flask(__name__)
-
+@app.route("/")
+def test():
+    return jsonify({
+        "succes":True
+    }),200
 
 @app.route("/api/bin_data/",methods = ["POST"])
 def upload_sim_data():
