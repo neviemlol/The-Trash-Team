@@ -21,7 +21,7 @@ def upload_sim_data():
         "succes":True
         }), 200
 @app.route("/api/db_test",methods = ["GET"])
-def test():
+def db_test():
     connection = None
 
     try:
