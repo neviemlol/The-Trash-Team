@@ -58,9 +58,9 @@ def send_data():
         connection = get_db_connection()
         with connection.cursor() as cursor:
             cursor.execute("""
-            INSERT INTO bins (location_id,status)
-            VALUES (%s,%s)
-            """,(1,"2")
+            INSERT INTO bins (location_id,capacity,status)
+            VALUES (%s,%s,%s)
+            """,(1,3,"2")
             )
             
     except Exception:
