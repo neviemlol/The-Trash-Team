@@ -52,11 +52,16 @@ def db_test():
             
 @app.route("/api/send",methods = ["POST"])
 def send_data():
-    cursor.execute("""
-    INSERT INTO bins (bin_id)
-    VALUES (%s)
-    """,(1)
-    )
+    connection = None
+
+    try:
+        connection = get_db_connection()
+        with connection.cursor() as cursor:
+            cursor.execute("""
+            INSERT INTO bins (bin_id)
+            VALUES (%s)
+            """,(1)
+            )
 """   
     data = request.get_json()
     if not isinstance(data, dict):
