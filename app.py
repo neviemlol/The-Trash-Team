@@ -62,6 +62,10 @@ def send_data():
             VALUES (%s)
             """,(1)
             )
+    except Exception:
+        app.logger.exception("Login database query failed")
+    cursor.close()
+    conn.close(
 """   
     data = request.get_json()
     if not isinstance(data, dict):
