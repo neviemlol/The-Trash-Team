@@ -58,9 +58,9 @@ def send_data():
         connection = get_db_connection()
         with connection.cursor() as cursor:
             cursor.execute("""
-            INSERT INTO bins (bin_id)
+            INSERT INTO bins (status)
             VALUES (%s)
-            """,(1,)
+            """,("hello")
             )
     except Exception:
         app.logger.exception("Login database query failed")
