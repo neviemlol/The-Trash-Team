@@ -52,6 +52,11 @@ def db_test():
             
 @app.route("/api/send",methods = ["POST"])
 def send_data():
+    cursor.execute("""
+    INSERT INTO bins (bin_id)
+    VALUES (%s)
+    """,(1)
+    )
 """   
     data = request.get_json()
     if not isinstance(data, dict):
@@ -61,11 +66,7 @@ def send_data():
             "message":"invalid request data"
             }),400
 """   
-    cursor.execute("""
-    INSERT INTO bins (bin_id)
-    VALUES (%s)
-    """,(1)
-    )
+    
 
     
 if __name__ == "__main__":
