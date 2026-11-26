@@ -60,12 +60,13 @@ def send_data():
             cursor.execute("""
             INSERT INTO bins (bin_id)
             VALUES (%s)
-            """,(1)
+            """,(1,)
             )
     except Exception:
         app.logger.exception("Login database query failed")
-    cursor.close()
-    conn.close()
+    
+    connection.close()
+    connection.commit()
 """   
     data = request.get_json()
     if not isinstance(data, dict):
