@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request
 from db import get_db_connection
 
 app = Flask(__name__)
+
 @app.route("/")
 def test():
     return jsonify({
@@ -21,6 +22,7 @@ def upload_sim_data():
     return jsonify({
         "succes":True
         }), 200
+
 @app.route("/api/db_test",methods = ["GET"])
 def db_test():
     connection = None
@@ -47,5 +49,25 @@ def db_test():
     finally:
         if connection is not None:
             connection.close()
+            
+@app.route("/api/send",methods = ["POST"])
+def send_data():
+"""   
+    data = request.get_json()
+    if not isinstance(data, dict):
+
+        return jssonify({
+            "succes": False,
+            "message":"invalid request data"
+            }),400
+"""   
+    cursor.execute("""
+    INSERT INTO bins (bin_id)
+    VALUES (%s)
+    """,(1)
+    )
+
+    
 if __name__ == "__main__":
     app.run(host = "0.0.0.0",port = "5000", debug=False)
+
