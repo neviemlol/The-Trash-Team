@@ -59,7 +59,7 @@ def send_data():
         with connection.cursor() as cursor:
             cursor.execute("""
             INSERT INTO bins (capacity,status)
-            VALUES (%s,%s,%s)
+            VALUES (%s,%s)
             """,(3,"active")
             )
         connection.commit()
