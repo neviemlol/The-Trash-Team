@@ -60,7 +60,7 @@ def send_data():
             cursor.execute("""
             INSERT INTO test (test_text,test_number)
             VALUES (%s,%s,%s)
-            """,("hello",25)
+            """,("hello",1)
             )
         connection.commit()
         return jsonify({"success": True}), 201
