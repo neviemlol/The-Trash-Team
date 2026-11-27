@@ -60,7 +60,7 @@ def send_data():
             cursor.execute("""
             INSERT INTO bins (location_id,capacity,status)
             VALUES (%s,%s,%s)
-            """,(1,3,"1")
+            """,(1,3,"hello")
             )
             
     except Exception:
