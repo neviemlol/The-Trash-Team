@@ -62,17 +62,25 @@ def send_data():
             VALUES (%s,%s,%s)
             """,(1,3,"hello")
             )
-            
+        connection.commit()
+        return jsonify({"success": True}), 201
     except Exception:
-        app.logger.exception("Login database query failed")
-    connection.commit()
-    connection.close()
+        app.logger.exception("Insert into bins failed")
+        if connection is not None:
+            connection.rollback()
+        return jsonify({
+                "success": False,
+                "message": "Database insert failed. Check the Flask terminal."
+            }), 500
+    finally:
+        if connection is not None:
+            connection.close()
     
 """   
     data = request.get_json()
     if not isinstance(data, dict):
 
-        return jssonify({
+        return jsonify({
             "succes": False,
             "message":"invalid request data"
             }),400
