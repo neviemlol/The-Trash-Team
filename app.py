@@ -59,7 +59,7 @@ def send_data():
         with connection.cursor() as cursor:
             cursor.execute("""
             INSERT INTO test (test_text,test_number)
-            VALUES (%s,%s,%s)
+            VALUES (%s,%s)
             """,("hello",1)
             )
         connection.commit()
