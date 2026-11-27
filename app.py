@@ -58,9 +58,9 @@ def send_data():
         connection = get_db_connection()
         with connection.cursor() as cursor:
             cursor.execute("""
-            INSERT INTO bins (location_id,capacity,status)
+            INSERT INTO bins (capacity,status)
             VALUES (%s,%s,%s)
-            """,(1,3,"active")
+            """,(3,"active")
             )
         connection.commit()
         return jsonify({"success": True}), 201
